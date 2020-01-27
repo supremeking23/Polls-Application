@@ -1,8 +1,21 @@
-<h1>{{ question.question_text }}</h1>
-<ul>
-    {% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text}} -- {{choice.votes}} vote{{choice.votes|pluralize}}</li>
-    {% endfor %}
-</ul>
+{% load static %}
+ <!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'polls/css/materialize.min.css' %}">
 
-<a href="{% url 'polls:detail' question.id %}">Vote Again ?</a>
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<div class="container">
+
+	<h1>{{ question.question_text }}</h1>
+	<ul>
+	    {% for choice in question.choice_set.all %}
+	    <li>{{ choice.choice_text}} -- {{choice.votes}} vote{{choice.votes|pluralize}}</li>
+	    {% endfor %}
+	</ul>
+
+	<a href="{% url 'polls:detail' question.id %}" class="btn waves-effect waves-light pulse">Vote Again ?</a>
+
+</div>
